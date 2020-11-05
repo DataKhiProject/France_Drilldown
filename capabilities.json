@@ -84,7 +84,7 @@
             "displayNameKey": "tooltip",
             "properties": {
                 "show":{
-                    "displayName" : "display",
+                    "displayName" : "Display",
                     "displayNameKey": "display",
                     "type": {
                         "bool" : true
@@ -93,25 +93,25 @@
             }
         },
         "scale":{
-            "displayName": "Color scale",
+            "displayName": "Color Scale",
             "displayNameKey": "colorScale",
             "properties": {
                 "show":{
-                    "displayName": "display",
+                    "displayName": "Display",
                     "displayNameKey": "display",
                     "type": {
                         "bool" : true
                     }
                 },
                 "height":{
-                    "displayName": "height",
+                    "displayName": "Height",
                     "displayNameKey": "height",
                     "type": {
                         "integer" : true
                     }
                 },
                 "width":{
-                    "displayName": "width",
+                    "displayName": "Width",
                     "displayNameKey": "width",
                     "type": {
                         "integer" : true
@@ -130,7 +130,7 @@
                     }
                 },
                 "extremum":{
-                    "displayName": "display only extrem value",
+                    "displayName": "Sisplay only extreme value",
                     "displayNameKey": "displayExtremum",
                     "type": {
                         "bool": true
@@ -143,7 +143,7 @@
             "displayNameKey": "Division",
             "properties":{
                 "level1": {
-                    "displayName": "1st level",
+                    "displayName": "1st Level",
                     "displayNameKey": "level1",
                     "type": {
                         "enumeration":[
@@ -163,7 +163,7 @@
                     }
                 },
                 "level2": {
-                    "displayName": "2nd level",
+                    "displayName": "2nd Level",
                     "displayNameKey": "level2",
                     "type": {
                         "enumeration":[
@@ -183,8 +183,8 @@
                     }
                 },
                 "level3": {
-                    "displayName": "3eme Niveau",
-                    "displayNameKey": "3rd level",
+                    "displayName": "3rd Level",
+                    "displayNameKey": "level3",
                     "type": {
                         "enumeration":[
                             {
