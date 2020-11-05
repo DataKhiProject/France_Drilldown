@@ -1,0 +1,204 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Localization",
+            "displayNameKey": "localization",
+            "name": "category",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Value",
+            "displayNameKey": "Value",
+            "name": "measure",
+            "kind": "Measure"
+        }
+    ],
+    "drilldown": {
+        "roles": [
+            "category"
+        ]
+    },
+    "supportsHighlight": true,
+    "supportsLandingPage": true,
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {"measure": {"max": 1}, "category":{"max": 1}}
+            ],
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "category"
+                    }
+                },
+                "values": {
+                    "select": [
+                        {
+                            "bind": {
+                                "to": "measure"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "objects": {
+        "couleur": {
+            "displayName": "Color",
+            "displayNameKey": "color",
+            "properties": {
+                "minColor":{
+                    "displayName": "Minimal Color",
+                    "displayNameKey": "colorMin",
+                    "type": {
+                        "fill" :{
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }                    
+                },
+                "maxColor":{
+                    "displayName": "Maximal Color",
+                    "displayNameKey": "ColorMax",
+                    "type": {
+                        "fill" :{
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }                    
+                },
+                "colorRange":{
+                    "displayName": "Color Level",
+                    "displayNameKey": "colorLevel",
+                    "type": {
+                        "integer": true
+                    }
+                }
+            }
+        },
+        "tooltip": {
+            "displayName": "Tooltip",
+            "displayNameKey": "tooltip",
+            "properties": {
+                "show":{
+                    "displayName" : "display",
+                    "displayNameKey": "display",
+                    "type": {
+                        "bool" : true
+                    }
+                }
+            }
+        },
+        "scale":{
+            "displayName": "Color scale",
+            "displayNameKey": "colorScale",
+            "properties": {
+                "show":{
+                    "displayName": "display",
+                    "displayNameKey": "display",
+                    "type": {
+                        "bool" : true
+                    }
+                },
+                "height":{
+                    "displayName": "height",
+                    "displayNameKey": "height",
+                    "type": {
+                        "integer" : true
+                    }
+                },
+                "width":{
+                    "displayName": "width",
+                    "displayNameKey": "width",
+                    "type": {
+                        "integer" : true
+                    }
+                },
+                "xpos":{
+                    "displayName": "X",
+                    "type": {
+                        "integer" : true
+                    }
+                },
+                "ypos":{
+                    "displayName": "Y",
+                    "type": {
+                        "integer" : true
+                    }
+                },
+                "extremum":{
+                    "displayName": "display only extrem value",
+                    "displayNameKey": "displayExtremum",
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "map":{
+            "displayName": "Division",
+            "displayNameKey": "Division",
+            "properties":{
+                "level1": {
+                    "displayName": "1st level",
+                    "displayNameKey": "level1",
+                    "type": {
+                        "enumeration":[
+                            {
+                                "value": "regions",
+                                "displayName": "régions"
+                            },
+                            {
+                                "value": "departements",
+                                "displayName": "département"
+                            },
+                            {
+                                "value": "arrondissements",
+                                "displayName": "arrondissements"
+                            }
+                        ]
+                    }
+                },
+                "level2": {
+                    "displayName": "2nd level",
+                    "displayNameKey": "level2",
+                    "type": {
+                        "enumeration":[
+                            {
+                                "value": "departements",
+                                "displayName": "département"
+                            },
+                            {
+                                "value": "arrondissements",
+                                "displayName": "arrondissements"
+                            },
+                            {
+                                "value": "communes",
+                                "displayName": "communes"
+                            }
+                        ]
+                    }
+                },
+                "level3": {
+                    "displayName": "3eme Niveau",
+                    "displayNameKey": "3rd level",
+                    "type": {
+                        "enumeration":[
+                            {
+                                "value": "arrondissements",
+                                "displayName": "arrondissements"
+                            },
+                            {
+                                "value": "communes",
+                                "displayName": "communes"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

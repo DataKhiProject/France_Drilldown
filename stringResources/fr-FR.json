@@ -1,0 +1,21 @@
+{
+    "locale": "fr-FR",
+    "values": {
+        "localization": "localisation",
+        "Value": "Valeur",
+        "color": "Couleur",
+        "colorMin": "Couleur minimal",
+        "ColorMax": "Couleur maximal",
+        "colorLevel": "Niveau de couleur",
+        "tooltip": "Info-bulle",
+        "display": "Afficher",
+        "colorScale": "Echelle de couleur",
+        "height": "Hauteur",
+        "width": "width",
+        "displayExtremum": "Afficher seulement les valeurs extrème",
+        "Division": "Découpage",
+        "level1": "1er Niveau",
+        "level2": "2ème Niveau",
+        "level3": "3ème Niveau"
+    }
+}

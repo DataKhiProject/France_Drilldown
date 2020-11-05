@@ -1,0 +1,5 @@
+{
+    "description1": "Add data to start working with the visual. Localization data must be a hierarchy of 'régions', 'département', 'arrondissement' then finaly 'communes'.",
+    "description2": "Territory are mapped with INSEE code or the territory name.",
+    "description3": "If the hierarchy isn't complete, you can use format option to specify your hierarchy."
+}

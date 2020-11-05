@@ -1,0 +1,21 @@
+{
+    "localization": "localisation",
+        "Value": "Valeur",
+        "color": "Couleur",
+        "colorMin": "Couleur minimal",
+        "ColorMax": "Couleur maximal",
+        "colorLevel": "Niveau de couleur",
+        "tooltip": "Info-bulle",
+        "display": "Afficher",
+        "colorScale": "Echelle de couleur",
+        "height": "Hauteur",
+        "width": "Largeur",
+        "displayExtremum": "Afficher seulement les valeurs extrème",
+        "Division": "Découpage",
+        "level1": "1er Niveau",
+        "level2": "2ème Niveau",
+        "level3": "3ème Niveau",
+    "description1": "Pour commencer a utiliser ce visuel, ajoutez vos données. Les données de localisation doit être la hiérarchie régions, départements, arrondissements, puis communes.",
+    "description2": "Vous pouvez identifier les territoires avec le code INSEE, ou avec le nom du territoire.",
+    "description3": "Si vous n'avez pas la hierarchie complète, utiliser les fonctions de formatage du visuel pour spécifier votre hierarchie"
+}
