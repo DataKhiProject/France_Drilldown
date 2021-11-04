@@ -130,7 +130,7 @@
                     }
                 },
                 "extremum":{
-                    "displayName": "Sisplay only extreme value",
+                    "displayName": "Display only extreme value",
                     "displayNameKey": "displayExtremum",
                     "type": {
                         "bool": true

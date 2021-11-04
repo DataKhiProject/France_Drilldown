@@ -59,7 +59,7 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
     //on boucle sur les formes, pour récupérer les informations
     for (var i = 0; i < geo.features.length; ++i) {
         //récupération du nom de la forme
-        var name = geo.features[i].properties.nom;
+        var name = geo.features[i].nom;
 
         //récupération du tracer de la forme
         var feat = geo.features[i];
@@ -67,7 +67,7 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
         //récupération de l'index de catégories et values correspondant à la forme traité
         var index: number;
         if (isCode) {
-            var code: string = geo.features[i].properties.code;
+            var code: string = geo.features[i].code;
             index = util.VALUEMATCHER(code, categories);
         }
         else {
