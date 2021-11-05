@@ -41,10 +41,10 @@ export class Scale {
             .enter()
             .append('rect')
             .attr('x', '0px')
-            .attr('y', (d) => { return d * elementHeight + 'px' })
+            .attr('y', (d:number) => { return d * elementHeight + 'px' })
             .attr('height', elementHeight + 'px')
             .attr('width', width + 'px')
-            .attr('fill', (d) =>
+            .attr('fill', (d:number) =>
              { return settings.scale.colors.getColor(d); })
 
         //axe gradué
