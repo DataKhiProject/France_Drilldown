@@ -66,14 +66,10 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
 
         //récupération de l'index de catégories et values correspondant à la forme traité
         var index: number;
-        //if (isCode) {
-            var code: string = geo.features[i].code;
-            index = util.VALUEMATCHER(code, categories);
-        /*}
-        else {
-            var nameSimple: string = util.SIMPLIFYSTRING(name); //on simplifie le nom de la forme pour faciliter le matching avec le nom des catégories
-            index = util.VALUEMATCHER(nameSimple, categoriesSimple);
-        }*/
+
+        var code: string = geo.features[i].code;
+        index = util.VALUEMATCHER(code, categories);
+
         if (index == -1) //Si l'index retourner est -1, on passe a l'ittération suivante
         {
             var dp: DataPoint = { name: name, mapData: feat, value: 0, color: "#FFFFFF", selectionId: null, highlight: null };
