@@ -74,7 +74,7 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
         {
             var dp: DataPoint = { name: name, mapData: feat, value: 0, color: "#FFFFFF", selectionId: null, highlight: null };
             empty.push(dp);
-            continue
+            continue;
         }
 
         //assignation de la valeur
