@@ -80,7 +80,7 @@ export class util {
      * @param objectName nom de l'objet
      * @param propertyName nom de la propriété
      * @param defaultValue valeur par défault
-     */
+     *     */
     public static GETVALUE<T>(objects: DataViewObjects, objectName: string, propertyName: string, defaultValue: T): T {
         if (objects) {
             let object = objects[objectName];

@@ -6,18 +6,23 @@ type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
 import {DataModel} from "./dataModel"
 import { VisualSettings } from "./VisualSettings";
+import { scaleBand } from "d3";
 
 export class Scale {
     private div: Selection<SVGElement>
+    private element: HTMLElement;
 
     constructor(svg:Selection<SVGElement>){
-        this.div = svg.append('g');
+        this.div = svg.append('g').attr('id','scale');
     }
 
+    
     public erase(){
         this.div.selectAll('#legend').remove(); //suppression de l'échelle de couleur
         this.div.selectAll('#legendAxis').remove(); //suppression de l'axe de l'échelle de couleur
     }
+
+
 
     
     public draw(dataModel: DataModel,settings: VisualSettings,selectionManager: ISelectionManager){
@@ -26,14 +31,16 @@ export class Scale {
 
         if ( ! settings.scale.show)
             return;
-
+        
         var elementHeight = settings.scale.height/settings.scale.rangeLevel;
         var width = settings.scale.width;
         var x = settings.scale.xpos;
         var y = settings.scale.ypos;
 
+        
+
         //échelle de couleur
-        this.div.append('g') //on va supperposer les carréer de couleur pour créer notre échelle de couleur
+        this.div.append('scale') //on va supperposer les carréer de couleur pour créer notre échelle de couleur
             .attr('id', 'legend')
             .attr('transform', 'translate(' + x + ',' + y + ')')
             .selectAll('.colorbar')
@@ -53,7 +60,7 @@ export class Scale {
             .range([0, settings.scale.rangeLevel * elementHeight]);
         x = x - 10; //Pour décaler l'axe pour qu'il ne soit pas collé à l'échelle
 
-        this.div.append('g')
+        this.div.append('scale')
             .attr('id', 'legendAxis')
             .attr('transform', 'translate(' + x + ',' + y + ')')
             .call(d3.axisLeft(legendScale)

@@ -1,6 +1,7 @@
 import powerbi from "powerbi-visuals-api";
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import ISelectionId = powerbi.extensibility.ISelectionId;
+import { valueFormatter } from "powerbi-visuals-utils-formattingutils";
 
 import * as d3 from "d3";
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
@@ -17,6 +18,7 @@ export class Map {
     private previousSelected: ISelectionId[];
     private previousDrillLevel: number;
     private projection: GeoProjection;
+    
 
     constructor(svg: Selection<SVGElement>) {
         this.div = svg.append('g');
@@ -25,6 +27,7 @@ export class Map {
             .center([2.454071, 47.279229]) //centre de la france
             .scale(2600) //zoom
         this.previousDrillLevel = 0;
+        
     }
 
     public erase() {
@@ -34,7 +37,7 @@ export class Map {
     private static getTooltipData(value: any) {
         return [{
             displayName: value.name,
-            value: value.value.toString()
+            value: value.value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, " ")
         }];
     }
 

@@ -113,6 +113,7 @@ export class VisualSettings {
     this.mapBackground.mapSelection.push(level3);
     this.mapBackground.mapSelection.push(level4);
     this.mapBackground.mapSelection.push("IRIS");
+    
     //on sélectionne la map a utiliser en fonction du niveau de drill et du découpage sélectionné.
     console.log(this.mapBackground.drillLevel);
     this.mapBackground.selectedMap = this.mapBackground.mapSelection[this.mapBackground.drillLevel]; //donne la carte a utiliser en fonction du niveau de drilldown

@@ -1,6 +1,5 @@
 {
-    "dataRoles": [
-        {
+    "dataRoles": [{
             "displayName": "Localization",
             "displayNameKey": "localization",
             "name": "category",
@@ -13,64 +12,63 @@
             "kind": "Measure"
         }
     ],
+
     "drilldown": {
         "roles": [
             "category"
         ]
     },
+
     "supportsHighlight": true,
     "supportsLandingPage": true,
-    "dataViewMappings": [
-        {
-            "conditions": [
-                {"measure": {"max": 1}, "category":{"max": 1}}
-            ],
-            "categorical": {
-                "categories": {
-                    "for": {
-                        "in": "category"
-                    }
-                },
-                "values": {
-                    "select": [
-                        {
-                            "bind": {
-                                "to": "measure"
-                            }
-                        }
-                    ]
+
+    "dataViewMappings": [{
+        "conditions": [
+            { "measure": { "max": 1 }, "category": { "max": 1 } }
+        ],
+        "categorical": {
+            "categories": {
+                "for": {
+                    "in": "category"
                 }
+            },
+            "values": {
+                "select": [{
+                    "bind": {
+                        "to": "measure"
+                    }
+                }]
             }
         }
-    ],
+    }],
     "objects": {
         "couleur": {
             "displayName": "Color",
             "displayNameKey": "color",
             "properties": {
-                "minColor":{
+                "minColor": {
                     "displayName": "Minimal Color",
                     "displayNameKey": "colorMin",
                     "type": {
-                        "fill" :{
+                        "fill": {
                             "solid": {
                                 "color": true
                             }
                         }
-                    }                    
+                    }
                 },
-                "maxColor":{
+                "maxColor": {
                     "displayName": "Maximal Color",
                     "displayNameKey": "ColorMax",
                     "type": {
-                        "fill" :{
+                        "fill": {
                             "solid": {
                                 "color": true
                             }
                         }
-                    }                    
+                    }
                 },
-                "colorRange":{
+                "colorRange": {
                     "displayName": "Color Level",
                     "displayNameKey": "colorLevel",
                     "type": {
@@ -83,53 +81,53 @@
             "displayName": "Tooltip",
             "displayNameKey": "tooltip",
             "properties": {
-                "show":{
-                    "displayName" : "Display",
+                "show": {
+                    "displayName": "Display",
                     "displayNameKey": "display",
                     "type": {
-                        "bool" : true
+                        "bool": true
                     }
                 }
             }
         },
-        "scale":{
+        "scale": {
             "displayName": "Color Scale",
             "displayNameKey": "colorScale",
             "properties": {
-                "show":{
+                "show": {
                     "displayName": "Display",
                     "displayNameKey": "display",
                     "type": {
-                        "bool" : true
+                        "bool": true
                     }
                 },
-                "height":{
+                "height": {
                     "displayName": "Height",
                     "displayNameKey": "height",
                     "type": {
-                        "integer" : true
+                        "integer": true
                     }
                 },
-                "width":{
+                "width": {
                     "displayName": "Width",
                     "displayNameKey": "width",
                     "type": {
-                        "integer" : true
+                        "integer": true
                     }
                 },
-                "xpos":{
+                "xpos": {
                     "displayName": "X",
                     "type": {
-                        "integer" : true
+                        "integer": true
                     }
                 },
-                "ypos":{
+                "ypos": {
                     "displayName": "Y",
                     "type": {
-                        "integer" : true
+                        "integer": true
                     }
                 },
-                "extremum":{
+                "extremum": {
                     "displayName": "Display only extreme value",
                     "displayNameKey": "displayExtremum",
                     "type": {
@@ -138,16 +136,15 @@
                 }
             }
         },
-        "map":{
+        "map": {
             "displayName": "Division",
             "displayNameKey": "Division",
-            "properties":{
+            "properties": {
                 "level1": {
                     "displayName": "1st Level",
                     "displayNameKey": "level1",
                     "type": {
-                        "enumeration":[
-                            {
+                        "enumeration": [{
                                 "value": "regions",
                                 "displayName": "régions"
                             },
@@ -174,8 +171,7 @@
                     "displayName": "2nd Level",
                     "displayNameKey": "level2",
                     "type": {
-                        "enumeration":[
-                            {
+                        "enumeration": [{
                                 "value": "departements",
                                 "displayName": "département"
                             },
@@ -202,8 +198,7 @@
                     "displayName": "3rd Level",
                     "displayNameKey": "level3",
                     "type": {
-                        "enumeration":[
-                            {
+                        "enumeration": [{
                                 "value": "arrondissements",
                                 "displayName": "arrondissements"
                             },
@@ -226,8 +221,7 @@
                     "displayName": "4th Level",
                     "displayNameKey": "level4",
                     "type": {
-                        "enumeration":[
-                            {
+                        "enumeration": [{
                                 "value": "communes",
                                 "displayName": "communes"
                             },

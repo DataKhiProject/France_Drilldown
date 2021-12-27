@@ -12,7 +12,6 @@ import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnume
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 
-
 import * as d3 from "d3";
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
@@ -20,9 +19,10 @@ import { VisualSettings } from "./VisualSettings";
 import * as model from "./dataModel"
 import { Map } from "./map";
 import { Scale } from "./scale"
-import { ITooltipServiceWrapper, createTooltipServiceWrapper } from "./toolTip";
+import { ITooltipServiceWrapper, createTooltipServiceWrapper} from "./toolTip";
 import { LandingPage} from "./landingPage";
 import { style } from "d3";
+
 
 export class Visual implements IVisual {
     private svg: Selection<SVGElement>; //div principale
@@ -32,7 +32,7 @@ export class Visual implements IVisual {
 
     private host: IVisualHost;
     private selectionManager: ISelectionManager;
-    private tooltipServiceWrapper: ITooltipServiceWrapper;
+    private tooltipServiceWrapper: ITooltipServiceWrapper; //Tooltip
 
     //Landing page
     private element: HTMLElement;
@@ -40,7 +40,6 @@ export class Visual implements IVisual {
     private LandingPageRemoved: boolean;
     private LandingPage: Selection<any>;
     private LandingPageHTML: LandingPage;
-
     private dataModel: model.DataModel;
     private settings: VisualSettings;
 
@@ -55,9 +54,9 @@ export class Visual implements IVisual {
         this.tooltipServiceWrapper = createTooltipServiceWrapper(this.host.tooltipService, options.element);
         this.element = options.element;
         this.LandingPageHTML = new LandingPage(this.host);
-
     }
-
+    
+    // Affichage du logo Datakhi (à retirer)
     /*
     public createLogo(width:number,height:number){
         this.logo.selectAll('.image').remove();
@@ -78,14 +77,15 @@ export class Visual implements IVisual {
             //parse du datamodel     
             this.dataModel = model.parseDataModel(options.dataViews[0], this.settings, this.host);
             
-            
             //Attribution de la taille a la div principal
             var width = options.viewport.width;
             var height = options.viewport.height;
-
             
-            this.svg.attr('width', width);
-            this.svg.attr('height', height);
+            
+            this.svg.attr('width', options.viewport.width);
+            this.svg.attr('height', options.viewport.height);
+
+
             this.svg.on('contextmenu', (d) => { //gestion du clic gauche
                 const mouseEvent: MouseEvent = <MouseEvent> d3.event;
                 
@@ -96,12 +96,16 @@ export class Visual implements IVisual {
                 mouseEvent.preventDefault();
             });
 
-            //Affichage du logo
+
+            //Affichage du logo (à retirer)
             //this.createLogo(width,height); // potentiellement à modifier 
+            
             //dessin de l'échelle de couleur
             this.colorScale.draw(this.dataModel, this.settings, this.selectionManager);
+
             //dessin de la carte
             this.map.draw(this.dataModel, this.settings, this.selectionManager, width / 2, height / 2, this.tooltipServiceWrapper);
+            
         }
         else{
             this.svg.attr('width', 0);
@@ -109,7 +113,7 @@ export class Visual implements IVisual {
         }
  
     }
-
+    
     private handleLandingPage(options: VisualUpdateOptions) {
         if(!options.dataViews || !options.dataViews.length) {
             if(!this.LandingPage){
@@ -169,6 +173,7 @@ export class Visual implements IVisual {
                     displayName: objectName,
                     properties: {
                         show: this.settings.tooltip.show
+                        
                     },
                     selector: null
                 });
