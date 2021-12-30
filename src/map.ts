@@ -1,7 +1,6 @@
 import powerbi from "powerbi-visuals-api";
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import ISelectionId = powerbi.extensibility.ISelectionId;
-import { valueFormatter } from "powerbi-visuals-utils-formattingutils";
 
 import * as d3 from "d3";
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
