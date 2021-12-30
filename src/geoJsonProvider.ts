@@ -30,7 +30,7 @@ export function geoJsonProvider(name: string) {
             console.log("communes");
             result = communesJson;
             break;
-        case 'canton':
+        case 'cantons':
             console.log("cantons");
             result = cantonJson;
             break;

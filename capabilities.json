@@ -37,7 +37,12 @@
                     "bind": {
                         "to": "measure"
                     }
-                }]
+                }],
+                "dataReductionAlgorithm": {
+                    "top": {
+                        "count": 30000
+                    }
+                } 
             }
         }
     }],
