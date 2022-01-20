@@ -86,14 +86,27 @@ export class Visual implements IVisual {
             this.svg.attr('height', options.viewport.height);
 
             //Attribution de la taille a la div principal
-            var width = options.viewport.width-this.settings.scale.width;
-            var height = options.viewport.height;
-            this.svg_map.attr('width', width);
-            this.svg_map.attr('height', height);
-            this.svg_map.attr('x',this.settings.scale.width+5)
+            
+            if(this.settings.scale.show){
+                var width = options.viewport.width-this.settings.scale.width;
+                var height = options.viewport.height;
+                this.svg_map.attr('width', width);
+                this.svg_map.attr('height', height);
+                this.svg_map.attr('x',this.settings.scale.width+5)
 
-            this.svg_scale.attr('width', this.settings.scale.width);
-            this.svg_scale.attr('height', options.viewport.height);
+                this.svg_scale.attr('width', this.settings.scale.width);
+                this.svg_scale.attr('height', options.viewport.height);
+            }
+            else{
+                var width = options.viewport.width;
+                var height = options.viewport.height;
+                this.svg_map.attr('width', options.viewport.width);
+                this.svg_map.attr('height', options.viewport.height);
+                this.svg_map.attr('x',0)
+                
+                this.svg_scale.attr('width', 0);
+                this.svg_scale.attr('height', 0);
+            }
 
             this.svg.on('contextmenu', (d) => { //gestion du clic gauche
                 const mouseEvent: MouseEvent = <MouseEvent> d3.event;

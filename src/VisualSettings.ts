@@ -55,7 +55,7 @@ class ScaleSetting {
     this.rangeLevel = 6;
     this.colors = new ColorScale;
     this.show = true;
-    this.width = 100;
+    this.width = 150;
     this.extremum = false;
   }
 }
@@ -122,7 +122,7 @@ export class VisualSettings {
     this.scale.colors.setRange(this.scale.rangeLevel); //donne a l'échelle de couleur le nombre de catégorie de couleur 
     this.scale.colors.generateScale(); //on génère l'échelle de couleur
     this.scale.show = util.GETVALUE(metadata.objects,"scale","show",true);
-    this.scale.width = util.GETVALUE(metadata.objects,"scale","width",100);
+    this.scale.width = util.GETVALUE(metadata.objects,"scale","width",150);
     this.scale.extremum = util.GETVALUE(metadata.objects,"scale","extremum",false);
 
     //tooltip setting
