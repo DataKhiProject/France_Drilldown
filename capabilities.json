@@ -30,7 +30,12 @@
             "categories": {
                 "for": {
                     "in": "category"
-                }
+                },
+                "dataReductionAlgorithm": {
+                    "top": {
+                        "count": 30000
+                    }
+                } 
             },
             "values": {
                 "select": [{
@@ -106,28 +111,9 @@
                         "bool": true
                     }
                 },
-                "height": {
-                    "displayName": "Height",
-                    "displayNameKey": "height",
-                    "type": {
-                        "integer": true
-                    }
-                },
                 "width": {
                     "displayName": "Width",
                     "displayNameKey": "width",
-                    "type": {
-                        "integer": true
-                    }
-                },
-                "xpos": {
-                    "displayName": "X",
-                    "type": {
-                        "integer": true
-                    }
-                },
-                "ypos": {
-                    "displayName": "Y",
                     "type": {
                         "integer": true
                     }

@@ -21,11 +21,13 @@ import { Map } from "./map";
 import { Scale } from "./scale"
 import { ITooltipServiceWrapper, createTooltipServiceWrapper} from "./toolTip";
 import { LandingPage} from "./landingPage";
-import { style } from "d3";
+
 
 
 export class Visual implements IVisual {
     private svg: Selection<SVGElement>; //div principale
+    private svg_map: Selection<SVGElement>;
+    private svg_scale: Selection<SVGElement>;
     private colorScale: Scale; //div contenant l'échelle de couleur
     private map: Map; //div contenant la carte
     //private logo: Selection<SVGImageElement>; // img contenant le logo
@@ -45,8 +47,10 @@ export class Visual implements IVisual {
 
     constructor(options: VisualConstructorOptions) {
         this.svg = d3.select(options.element).append('svg');
-        this.map = new Map(this.svg);
-        this.colorScale = new Scale(this.svg);
+        this.svg_map = this.svg.append('svg');
+        this.svg_scale = this.svg.append('svg');
+        this.map = new Map(this.svg_map);
+        this.colorScale = new Scale(this.svg_scale);
         //this.logo = this.svg.append('image');
         this.settings = new VisualSettings;
         this.host = options.host;
@@ -76,15 +80,20 @@ export class Visual implements IVisual {
             this.settings.parse(options.dataViews[0]);
             //parse du datamodel     
             this.dataModel = model.parseDataModel(options.dataViews[0], this.settings, this.host);
-            
-            //Attribution de la taille a la div principal
-            var width = options.viewport.width;
-            var height = options.viewport.height;
-            
+                       
             
             this.svg.attr('width', options.viewport.width);
             this.svg.attr('height', options.viewport.height);
 
+            //Attribution de la taille a la div principal
+            var width = options.viewport.width-this.settings.scale.width;
+            var height = options.viewport.height;
+            this.svg_map.attr('width', width);
+            this.svg_map.attr('height', height);
+            this.svg_map.attr('x',this.settings.scale.width+5)
+
+            this.svg_scale.attr('width', this.settings.scale.width);
+            this.svg_scale.attr('height', options.viewport.height);
 
             this.svg.on('contextmenu', (d) => { //gestion du clic gauche
                 const mouseEvent: MouseEvent = <MouseEvent> d3.event;
@@ -101,7 +110,7 @@ export class Visual implements IVisual {
             //this.createLogo(width,height); // potentiellement à modifier 
             
             //dessin de l'échelle de couleur
-            this.colorScale.draw(this.dataModel, this.settings, this.selectionManager);
+            this.colorScale.draw(this.dataModel, this.settings, this.selectionManager,this.settings.scale.width,options.viewport.height);
 
             //dessin de la carte
             this.map.draw(this.dataModel, this.settings, this.selectionManager, width / 2, height / 2, this.tooltipServiceWrapper);
@@ -184,35 +193,14 @@ export class Visual implements IVisual {
                     displayName: objectName,
                     properties: {
                         show: this.settings.scale.show,
-                        height: this.settings.scale.height,
                         width: this.settings.scale.width,
-                        xpos: this.settings.scale.xpos,
-                        ypos: this.settings.scale.ypos,
                         extremum: this.settings.scale.extremum
                     },
                     validValues:{
-                        height: {
-                            numberRange:{
-                                min: 50,
-                                max: 500
-                            }
-                        },
                         width: {
                             numberRange:{
-                                min: 10,
-                                max: 100
-                            }
-                        },
-                        xpos: {
-                            numberRange:{
-                                min: 0,
-                                max: 5000
-                            }
-                        },
-                        ypos: {
-                            numberRange:{
-                                min: 0,
-                                max: 5000
+                                min: 100,
+                                max: 1000
                             }
                         }
                     },

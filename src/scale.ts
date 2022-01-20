@@ -6,14 +6,12 @@ type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
 import {DataModel} from "./dataModel"
 import { VisualSettings } from "./VisualSettings";
-import { scaleBand } from "d3";
 
 export class Scale {
     private div: Selection<SVGElement>
-    private element: HTMLElement;
 
     constructor(svg:Selection<SVGElement>){
-        this.div = svg.append('g').attr('id','scale');
+        this.div = svg.append('g');
     }
 
     
@@ -25,22 +23,20 @@ export class Scale {
 
 
     
-    public draw(dataModel: DataModel,settings: VisualSettings,selectionManager: ISelectionManager){
+    public draw(dataModel: DataModel,settings: VisualSettings,selectionManager: ISelectionManager,width,height){
         //supprime le dessin précédent
         this.erase();
 
         if ( ! settings.scale.show)
             return;
         
-        var elementHeight = settings.scale.height/settings.scale.rangeLevel;
-        var width = settings.scale.width;
-        var x = settings.scale.xpos;
-        var y = settings.scale.ypos;
-
+        var elementHeight = (height*0.6)/settings.scale.rangeLevel; 
         
+        var x = width/2
+        var y = height*0.2
 
         //échelle de couleur
-        this.div.append('scale') //on va supperposer les carréer de couleur pour créer notre échelle de couleur
+        this.div.append('g') //on va supperposer les carréer de couleur pour créer notre échelle de couleur
             .attr('id', 'legend')
             .attr('transform', 'translate(' + x + ',' + y + ')')
             .selectAll('.colorbar')
@@ -50,7 +46,7 @@ export class Scale {
             .attr('x', '0px')
             .attr('y', (d:number) => { return d * elementHeight + 'px' })
             .attr('height', elementHeight + 'px')
-            .attr('width', width + 'px')
+            .attr('width', '20px')
             .attr('fill', (d:number) =>
              { return settings.scale.colors.getColor(d); })
 
@@ -60,7 +56,7 @@ export class Scale {
             .range([0, settings.scale.rangeLevel * elementHeight]);
         x = x - 10; //Pour décaler l'axe pour qu'il ne soit pas collé à l'échelle
 
-        this.div.append('scale')
+        this.div.append('g')
             .attr('id', 'legendAxis')
             .attr('transform', 'translate(' + x + ',' + y + ')')
             .call(d3.axisLeft(legendScale)

@@ -13,33 +13,27 @@ import emploiJson from "../assets/geoJson/zone_emploi_map_wgs84.json";
  */
 export function geoJsonProvider(name: string) {
     var result;
+    console.log(name);
     switch (name) {
         case 'regions':
-            console.log("regions");
             result = regionsJson;
             break;
         case 'departements':
-            console.log("departements");
             result = departementsJson;
             break;
         case 'arrondissements':
-            console.log("arrondissement");
             result = arrondissementsJson;
             break;
         case 'communes':
-            console.log("communes");
             result = communesJson;
             break;
         case 'cantons':
-            console.log("cantons");
             result = cantonJson;
             break;
         case 'IRIS':
-            console.log("iris");
             result = irisJson;
             break;
         case 'Zone_emploi':
-            console.log("emploi");
             result = emploiJson;
             break;
     }
