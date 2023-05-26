@@ -40,7 +40,7 @@ class MapBackgroundSetting {
   constructor() {
     this.selectedMap = "regions";
     this.drillLevel = 0;
-    this.mapSelection = ["regions","departements","arrondissements","communes","IRIS"];
+    this.mapSelection = ["regions","departements","arrondissements","communes"];
   }
 }
 
@@ -101,12 +101,10 @@ export class VisualSettings {
     var level1 = util.GETVALUE(metadata.objects,"map","level1","regions");
     var level2 = util.GETVALUE(metadata.objects,"map","level2","departements");
     var level3 = util.GETVALUE(metadata.objects,"map","level3","arrondissements");
-    var level4 = util.GETVALUE(metadata.objects,"map","level4","communes");
     this.mapBackground.mapSelection.push(level1);
     this.mapBackground.mapSelection.push(level2);
     this.mapBackground.mapSelection.push(level3);
-    this.mapBackground.mapSelection.push(level4);
-    this.mapBackground.mapSelection.push("IRIS");
+    this.mapBackground.mapSelection.push("communes");
     
     //on sélectionne la map a utiliser en fonction du niveau de drill et du découpage sélectionné.
     console.log(this.mapBackground.drillLevel);

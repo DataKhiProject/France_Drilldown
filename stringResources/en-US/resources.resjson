@@ -1,5 +1,5 @@
 {
-    "description1": "Add data to start working with the visual. Localization data must contain (hierarchicly) 'régions' (regions), 'département' (departments), 'arrondissement' (districts) and 'communes' (cities). To display the city code (commune), respect this format: Department code + city code. To display the township code (canton): Department code + township code . To display the district code (arrondissement): Department code + District code. For other codes, simply enter the desired code.",
-    "description2": "Territory can be mapped with INSEE code.",
+    "description1": "Add data to start working with the visual. Localization data must contain (hierarchicly) 'régions' (regions), 'département' (departments), 'arrondissement' (districts) and 'communes' (cities). To display the city code (commune), respect this format: Department code + city code.
+    "description2": "Territory can be mapped with INSEE code or the territory name.",
     "description3": "If the hierarchy isn't complete please use format option to specify your hierarchy."
 }

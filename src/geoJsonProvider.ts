@@ -2,9 +2,6 @@ import departementsJson from "../assets/geoJson/departement_map_wgs84.json";
 import regionsJson from "../assets/geoJson/region_map_wgs84.json";
 import arrondissementsJson from "../assets/geoJson/arrondissement_map_wgs84.json";
 import communesJson from "../assets/geoJson/commune_map_wgs84.json";
-import cantonJson from "../assets/geoJson/canton_map_wgs84.json";
-import irisJson from "../assets/geoJson/iris_map_wgs84.json";
-import emploiJson from "../assets/geoJson/zone_emploi_map_wgs84.json";
 
 /**
  * Permet de récupérer les fichiers geoJson.
@@ -26,15 +23,6 @@ export function geoJsonProvider(name: string) {
             break;
         case 'communes':
             result = communesJson;
-            break;
-        case 'cantons':
-            result = cantonJson;
-            break;
-        case 'IRIS':
-            result = irisJson;
-            break;
-        case 'Zone_emploi':
-            result = emploiJson;
             break;
     }
     return result;

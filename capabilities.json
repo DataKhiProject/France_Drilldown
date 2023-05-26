@@ -140,20 +140,12 @@
                                 "displayName": "régions"
                             },
                             {
-                                "value": "Zone_emploi",
-                                "displayName": "zone d'emploi"
-                            },
-                            {
                                 "value": "departements",
                                 "displayName": "département"
                             },
                             {
                                 "value": "arrondissements",
                                 "displayName": "arrondissements"
-                            },
-                            {
-                                "value": "cantons",
-                                "displayName": "cantons"
                             }
                         ]
                     }
@@ -171,16 +163,8 @@
                                 "displayName": "arrondissements"
                             },
                             {
-                                "value": "cantons",
-                                "displayName": "cantons"
-                            },
-                            {
                                 "value": "communes",
                                 "displayName": "communes"
-                            },
-                            {
-                                "value": "IRIS",
-                                "displayName": "IRIS"
                             }
                         ]
                     }
@@ -194,31 +178,8 @@
                                 "displayName": "arrondissements"
                             },
                             {
-                                "value": "cantons",
-                                "displayName": "cantons"
-                            },
-                            {
                                 "value": "communes",
                                 "displayName": "communes"
-                            },
-                            {
-                                "value": "IRIS",
-                                "displayName": "IRIS"
-                            }
-                        ]
-                    }
-                },
-                "level4": {
-                    "displayName": "4th Level",
-                    "displayNameKey": "level4",
-                    "type": {
-                        "enumeration": [{
-                                "value": "communes",
-                                "displayName": "communes"
-                            },
-                            {
-                                "value": "IRIS",
-                                "displayName": "IRIS"
                             }
                         ]
                     }

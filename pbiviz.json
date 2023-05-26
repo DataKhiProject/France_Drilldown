@@ -5,7 +5,7 @@
         "guid": "cartography6439711748644562B5895D8406A5421E",
         "visualClassName": "Visual",
         "version": "1.1.2",
-        "description": "Carte choroplèthe de la France avec la possibilité de drilldown. Il existe 7 niveau de détail, zone d'emploi, régions, départements, arrondissements, cantons, communes et zone IRIS. Le découpage des territoires se fait automatiquement.",
+        "description": "Carte choroplèthe de la France avec la possibilité de drilldown. Il existe 4 niveaux de détail, régions, départements, arrondissements et communes. Le découpage des territoires se fait automatiquement.",
         "supportUrl": "https://datakhi.fr",
         "gitHubUrl": ""
     },

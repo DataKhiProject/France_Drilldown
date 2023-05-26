@@ -30,7 +30,7 @@ export class Visual implements IVisual {
     private svg_scale: Selection<SVGElement>;
     private colorScale: Scale; //div contenant l'échelle de couleur
     private map: Map; //div contenant la carte
-    //private logo: Selection<SVGImageElement>; // img contenant le logo
+    private logo: Selection<SVGImageElement>; // img contenant le logo
 
     private host: IVisualHost;
     private selectionManager: ISelectionManager;
@@ -51,7 +51,7 @@ export class Visual implements IVisual {
         this.svg_scale = this.svg.append('svg');
         this.map = new Map(this.svg_map);
         this.colorScale = new Scale(this.svg_scale);
-        //this.logo = this.svg.append('image');
+        this.logo = this.svg_map.append('image');
         this.settings = new VisualSettings;
         this.host = options.host;
         this.selectionManager = this.host.createSelectionManager();
@@ -60,17 +60,15 @@ export class Visual implements IVisual {
         this.LandingPageHTML = new LandingPage(this.host);
     }
     
-    // Affichage du logo Datakhi (à retirer)
-    /*
+    // Affichage du logo Datakhi
     public createLogo(width:number,height:number){
         this.logo.selectAll('.image').remove();
         this.logo.attr("width",20);
         this.logo.attr("height",15);
-        this.logo.attr("x",width - 19);
+        this.logo.attr("x",width - 25);
         this.logo.attr("y",4);
         this.logo.attr("xlink:href","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAA8CAYAAAAZp4inAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAUkSURBVGhDzZq7TpxHFMe9KwFabkm1KXARV1H8AN4GCm6ykCwhW8oDRG4onRdIkRewOyonXTpIEwlH3CSo8APEpS1LW5gChWsBEmR+qzOrb/ebOXP5lk1+EuLMh5jvP2fOnDk7s7X19fUnzWbzlwd9NBqN9srKyktp/q/Y3d19XdvY2Hg3MzPzVJ55OT8/P67Var8vLi7+JI/+E46Oju74Xe+0IpiammpOTk6+4h93dna+yOOhYkVDtPAiDIJOih3dN/3vyhJeRGbgozQHzuHh4abLQZWFg5mBb+mcl8ijgUB/o6Ojz6XZw0CEW3iJ8f6RNCuhiQav8LOzsw+tVqvGj8kon+RxEOP9J1UXb0g0eIUbsZ/FfLC0tPSIAVxfX/8hj1RYvLnimbGQaEgKlbm5uRexA8gRj2hmTJoqWTFuBxAKIREfFfMposErfHp6+jsxvRBCl5eXe9J0gphQtkkVDV7hpqNOigvl6YWFhcVQ6Ggxa/r+kioaokLFDoKXyKMeCJ2Q+P39/X/E7CKim9JMIinGeQkD2Nvb25VHXULix8fHvyqGDBVeSDTrSMwSWYtzYmJiwRU+iDcL9r00SxRDJlRlaqIhSzgQPq7QMQu2RQkszRLF2fKJC4mG+vHx8c/tdvsv+5O4S5LuSp434r8RswSzJWaH4iCxY0RD7e7OX5nGbL1ASiS7SLMDnu0Xabm4uHhTDBXWDaJdA+ZvYvaghordaEK52iWwfyBF6vX6j2J2YCApokH1eD9aRy6PaV7XQqJSkeVCe5krtWle39raeitmDzGiWYfJWUXL1a4sw0vEDBIp+r2Z2UdJoWIhk5AOpdmDa1b6Q4zBs36k2SFBdAs7K48zYjFLsCOK6cQl2jgiWIMXRUP2BmQ6cm4yt7e33jMan2gze2qRRVYrioZs4Tc3N3+K2YMph78Xs8vJycmvpLwc0QzWtcizYtziS48xu9/29vbfrkEWcc2QJdvjVSD7VBENQxeOaFfOL8KMaaJhqMJjRYupMjThrIdBiYahCN/c3HwnppOrq6vTFNGQLdxMe6kOh5QtHtgP5ufnv5ZmNNnCzbQ7t3yT30slMLcbYpYwG4v3Q4dGVh7PKVer5HwXWR73iSZWxYzGdWIQQ7Jw1/mIxdQpv4lZwlfb+JwQIkk4eZjzEWmW0I4cuPgSswTbv5jRRAvH01oeZosW04k2KLZ/45SkC4GgcGKQhaV5mhQY2qJBG5xxChcC0eKdWYXPgyMjI89CO50lJTOQ/32pFFjgMXk9+oLWh080n4RMDf5wdXX1B3nUxZcai7CYtRxfSbjmaSvOdVgEMeJ9cD+VlcdDtUUxZeacq4RgMScLx4NaDLLA+hfyoHdNiBZurw+1Qx5Ekx2k2YP5m/NSgD7pW5rRqDFOh8vLy4+lqaLVL5bQgmNwsZnM6/EU0Xg6ZutGlFYyMChmgFMBX4lg8Qo3/9i9oNUQL0VfPhH/xDwnV/KoBF/wsYOQRyWysgrYHTV2avvh5MoM2vlhJIZk4XgKwTGhYT5UXIvpxAy6c5t3r0UW8JLQGZ+FumR2dnYsFKtAXqZvwi509mjJDhUNYtMWXcSqEe+9iStC2NmvT/FzcHBwJn8qMVDhNtdLs4sR3wqVvS7GxsamxCwxMOEI09InM8CgjPeTTgF8VBZOCVAMjRDG+53vvsTEvkaWcIosjo0RoJUAGjZP5w4gSbgVS5E1qC9O2gHQd0oYeb+iyo3z2tpaVDa4L0iNp6enpePoRqPR/hfdDD4Ysu0iBAAAAABJRU5ErkJggg==");
     }
-    */
 
     public update(options: VisualUpdateOptions) {
         //landing page
@@ -119,8 +117,8 @@ export class Visual implements IVisual {
             });
 
 
-            //Affichage du logo (à retirer)
-            //this.createLogo(width,height); // potentiellement à modifier 
+            //Affichage du logo 
+            this.createLogo(width,height);
             
             //dessin de l'échelle de couleur
             this.colorScale.draw(this.dataModel, this.settings, this.selectionManager,this.settings.scale.width,options.viewport.height);
