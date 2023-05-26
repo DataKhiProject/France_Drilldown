@@ -17,6 +17,7 @@ export class Map {
     private previousSelected: ISelectionId[];
     private previousDrillLevel: number;
     private projection: GeoProjection;
+    
 
     constructor(svg: Selection<SVGElement>) {
         this.div = svg.append('g');
@@ -25,6 +26,7 @@ export class Map {
             .center([2.454071, 47.279229]) //centre de la france
             .scale(2600) //zoom
         this.previousDrillLevel = 0;
+        
     }
 
     public erase() {
@@ -34,7 +36,7 @@ export class Map {
     private static getTooltipData(value: any) {
         return [{
             displayName: value.name,
-            value: value.value.toString()
+            value: value.value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, " ")
         }];
     }
 
@@ -78,10 +80,17 @@ export class Map {
      * @param scale facteur de zoom²
      */
     private getTranslation(dataModel: DataModel, x: number, y: number, scale: number): [number, number] {
-        var centroid = util.GETCENTROID(dataModel.data, this.path);
-        var translate: [number, number] = [x - centroid[0], y - centroid[1]]; // vecteur de translation entre le centroid de la forme et celle de la div
+        var bound = util.GETEXTREMUMBOUND(dataModel.data, this.path);
+        var boundMax = bound[1];
+        var boundMin = bound[0];
+        var center: [number, number] = [boundMin[0]+(boundMax[0] - boundMin[0])/2,boundMin[1]+(boundMax[1] - boundMin[1])/2];
+        var translate: [number, number] = [x-center[0],y-center[1]];
         translate = [(-(scale - 1) * x + translate[0] * scale), (-(scale - 1) * y + translate[1] * scale)]; //recentrage en prenant en compte le scale
         return translate;
+        /*var centroid = util.GETCENTROID(dataModel.data, this.path);
+        var translate: [number, number] = [x - centroid[0], y - centroid[1]]; // vecteur de translation entre le centroid de la forme et celle de la div
+        translate = [(-(scale - 1) * x + translate[0] * scale), (-(scale - 1) * y + translate[1] * scale)]; //recentrage en prenant en compte le scale
+        return translate;*/
     }
 
     /**
@@ -97,7 +106,7 @@ export class Map {
         var boundMin = bound[0];
         var shapeWidth = boundMax[0] - boundMin[0];
         var shapeHeight = boundMax[1] - boundMin[1];
-        return Math.min(width / shapeWidth, (height / shapeHeight) * 0.8); // on diminue unpeu le scale de la hauteur pour pas que ca dépasse
+        return Math.min((width / shapeWidth)*0.95, (height / shapeHeight) * 0.8); // on diminue unpeu le scale de la hauteur pour pas que ca dépasse
     }
 
     /**

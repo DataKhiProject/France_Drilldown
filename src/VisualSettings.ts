@@ -48,20 +48,14 @@ class ScaleSetting {
   public rangeLevel: number;
   public colors: ColorScale ;
   public show: boolean;
-  public height: number;
   public width: number;
-  public xpos: number;
-  public ypos: number;
   public extremum: boolean;
 
   constructor() {
     this.rangeLevel = 6;
     this.colors = new ColorScale;
     this.show = true;
-    this.height = 250;
-    this.width = 20;
-    this.xpos = 100;
-    this.ypos = 50;
+    this.width = 150;
     this.extremum = false;
   }
 }
@@ -111,7 +105,9 @@ export class VisualSettings {
     this.mapBackground.mapSelection.push(level2);
     this.mapBackground.mapSelection.push(level3);
     this.mapBackground.mapSelection.push("communes");
+    
     //on sélectionne la map a utiliser en fonction du niveau de drill et du découpage sélectionné.
+    console.log(this.mapBackground.drillLevel);
     this.mapBackground.selectedMap = this.mapBackground.mapSelection[this.mapBackground.drillLevel]; //donne la carte a utiliser en fonction du niveau de drilldown
 
     //color setting
@@ -124,10 +120,7 @@ export class VisualSettings {
     this.scale.colors.setRange(this.scale.rangeLevel); //donne a l'échelle de couleur le nombre de catégorie de couleur 
     this.scale.colors.generateScale(); //on génère l'échelle de couleur
     this.scale.show = util.GETVALUE(metadata.objects,"scale","show",true);
-    this.scale.height = util.GETVALUE(metadata.objects,"scale","height",250);
-    this.scale.width = util.GETVALUE(metadata.objects,"scale","width",20);
-    this.scale.xpos = util.GETVALUE(metadata.objects,"scale","xpos",100);
-    this.scale.ypos = util.GETVALUE(metadata.objects,"scale","ypos",50);
+    this.scale.width = util.GETVALUE(metadata.objects,"scale","width",150);
     this.scale.extremum = util.GETVALUE(metadata.objects,"scale","extremum",false);
 
     //tooltip setting

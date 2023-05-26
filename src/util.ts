@@ -59,21 +59,18 @@ export class util {
      */
     public static GETDRILLLEVEL(metadata: powerbi.DataViewMetadataColumn[]): number {
         var result: number = 0;
-        var correction: boolean = false;
+        var indexMeasure:number =0;
         for (var i = 0; i < metadata.length; ++i) { // parcour les métadonnées de toute les colonnes
             if (metadata[i].roles.category) { //regarde si la colonnes est bien une category (et pas une value ou measure)
                 if (result < metadata[i].index) //prend l'index le plus haut
                     result = metadata[i].index;
             }
             else {
-                if (result >= metadata[i].index) //si une mesure s'est mis entre les catégories, on va devoir corriger le décalage d'index
-                    correction = true
+                indexMeasure = metadata[i].index;
             }
         }
-        if (correction) //on corrige le décalage d'index si besoin
+        if (indexMeasure<result) //on corrige le décalage d'index si besoin
             result = result - 1
-        if (result > 3) //si l'index est trop grand (ne devrait pas arriver sur une hierarchie de 4 niveau) on le remet a 3
-            return 3;
         return result;
     }
 
@@ -83,7 +80,7 @@ export class util {
      * @param objectName nom de l'objet
      * @param propertyName nom de la propriété
      * @param defaultValue valeur par défault
-     */
+     *     */
     public static GETVALUE<T>(objects: DataViewObjects, objectName: string, propertyName: string, defaultValue: T): T {
         if (objects) {
             let object = objects[objectName];

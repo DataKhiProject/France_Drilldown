@@ -2,16 +2,16 @@
     "visual": {
         "name": "FranceChoropleth",
         "displayName": "France Drilldown Choropleth",
-        "guid": "cartography6439711748644562B5895D8406A5421D",
+        "guid": "cartography6439711748644562B5895D8406A5421E",
         "visualClassName": "Visual",
-        "version": "1.0.2",
-        "description": "Carte choroplèthe de la France avec la possibilité de drilldown. Il existe 4 niveau de détail, régions, départements, arrondissements et communes. Le découpage des territoires se fait automatiquement.",
+        "version": "1.1.2",
+        "description": "Carte choroplèthe de la France avec la possibilité de drilldown. Il existe 4 niveaux de détail, régions, départements, arrondissements et communes. Le découpage des territoires se fait automatiquement.",
         "supportUrl": "https://datakhi.fr",
         "gitHubUrl": ""
     },
-    "apiVersion": "2.6.0",
+    "apiVersion": "3.8.0",
     "author": {
-        "name": "Data Khi",
+        "name": "DataKhi",
         "email": "jimmy.denis@datakhi.com"
     },
     "assets": {

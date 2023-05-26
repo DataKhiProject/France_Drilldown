@@ -15,7 +15,7 @@
         "level1": "1er Niveau",
         "level2": "2ème Niveau",
         "level3": "3ème Niveau",
-    "description1": "Pour commencer a utiliser ce visuel, ajoutez vos données. Les données de localisation doit être la hiérarchie régions, départements, arrondissements, puis communes.",
+    "description1": "Pour commencer a utiliser ce visuel, ajoutez vos données. Les données de localisation doit être la hiérarchie régions, départements, arrondissements, puis communes. Pour afficher le code Commune, respecter ce format: Code Departement + Code Commune."
     "description2": "Vous pouvez identifier les territoires avec le code INSEE, ou avec le nom du territoire.",
     "description3": "Si vous n'avez pas la hierarchie complète, utiliser les fonctions de formatage du visuel pour spécifier votre hierarchie"
 }

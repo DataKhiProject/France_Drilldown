@@ -1,7 +1,7 @@
-import departementsJson from "../assets/geoJson/departements.json";
-import regionsJson from "../assets/geoJson/regions.json";
-import arrondissementsJson from "../assets/geoJson/arrondissements.json";
-import communesJson from "../assets/geoJson/communes.json";
+import departementsJson from "../assets/geoJson/departement_map_wgs84.json";
+import regionsJson from "../assets/geoJson/region_map_wgs84.json";
+import arrondissementsJson from "../assets/geoJson/arrondissement_map_wgs84.json";
+import communesJson from "../assets/geoJson/commune_map_wgs84.json";
 
 /**
  * Permet de récupérer les fichiers geoJson.
@@ -10,6 +10,7 @@ import communesJson from "../assets/geoJson/communes.json";
  */
 export function geoJsonProvider(name: string) {
     var result;
+    console.log(name);
     switch (name) {
         case 'regions':
             result = regionsJson;

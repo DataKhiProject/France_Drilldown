@@ -14,23 +14,26 @@ export class Scale {
         this.div = svg.append('g');
     }
 
+    
     public erase(){
         this.div.selectAll('#legend').remove(); //suppression de l'échelle de couleur
         this.div.selectAll('#legendAxis').remove(); //suppression de l'axe de l'échelle de couleur
     }
 
+
+
     
-    public draw(dataModel: DataModel,settings: VisualSettings,selectionManager: ISelectionManager){
+    public draw(dataModel: DataModel,settings: VisualSettings,selectionManager: ISelectionManager,width,height){
         //supprime le dessin précédent
         this.erase();
 
         if ( ! settings.scale.show)
             return;
-
-        var elementHeight = settings.scale.height/settings.scale.rangeLevel;
-        var width = settings.scale.width;
-        var x = settings.scale.xpos;
-        var y = settings.scale.ypos;
+        
+        var elementHeight = (height*0.6)/settings.scale.rangeLevel; 
+        
+        var x = width/2
+        var y = height*0.2
 
         //échelle de couleur
         this.div.append('g') //on va supperposer les carréer de couleur pour créer notre échelle de couleur
@@ -41,10 +44,10 @@ export class Scale {
             .enter()
             .append('rect')
             .attr('x', '0px')
-            .attr('y', (d) => { return d * elementHeight + 'px' })
+            .attr('y', (d:number) => { return d * elementHeight + 'px' })
             .attr('height', elementHeight + 'px')
-            .attr('width', width + 'px')
-            .attr('fill', (d) =>
+            .attr('width', '20px')
+            .attr('fill', (d:number) =>
              { return settings.scale.colors.getColor(d); })
 
         //axe gradué

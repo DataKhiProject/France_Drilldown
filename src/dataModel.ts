@@ -23,6 +23,7 @@ export interface DataModel {
     emptyShape: DataPoint[];
 }
 
+
 export function parseDataModel(dataView: DataView, settings: VisualSettings, host: IVisualHost): DataModel {
     var dps: DataPoint[] = [];
     var empty: DataPoint[] = [];
@@ -30,20 +31,16 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
     var highlight: number[] = <number[]>dataView.categorical.values[0].highlights;
     var categories: string[] = <string[]>dataView.categorical.categories[0].values;
 
-
-    
-
-
     //détermines si les valeurs sont des noms ou des codes
     var isCode: boolean = util.ISCODE(categories[0]);
     if (!isCode) {     //si ce n'est pas des codes, on simplifie les noms
         var categoriesSimple: string[] = util.SIMPLIFYSTRINGARRAY(categories); //on simplifie le nom des catégorie pour facilité le matching avec le nom des formes
     }
 
-    //valeur extréme du dataview
+    //valeur extrême du dataview
     var minValue: number = <number>dataView.categorical.values[0].minLocal;
-    var maxValue: number = <number>dataView.categorical.values[0].maxLocal;
-
+    let maxValue: number = <number>dataView.categorical.values[0].maxLocal;
+    
     //on récupère le fond de carte si il y en a un de selectionner ou régions par défaut
     var map: string = settings.mapBackground.selectedMap ? settings.mapBackground.selectedMap : "regions";
     var geo = geoProvider.geoJsonProvider(map);
@@ -59,7 +56,7 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
     //on boucle sur les formes, pour récupérer les informations
     for (var i = 0; i < geo.features.length; ++i) {
         //récupération du nom de la forme
-        var name = geo.features[i].properties.nom;
+        var name = geo.features[i].nom;
 
         //récupération du tracer de la forme
         var feat = geo.features[i];
@@ -67,7 +64,7 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
         //récupération de l'index de catégories et values correspondant à la forme traité
         var index: number;
         if (isCode) {
-            var code: string = geo.features[i].properties.code;
+            var code: string = geo.features[i].code;
             index = util.VALUEMATCHER(code, categories);
         }
         else {
@@ -78,12 +75,11 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
         {
             var dp: DataPoint = { name: name, mapData: feat, value: 0, color: "#FFFFFF", selectionId: null, highlight: null };
             empty.push(dp);
-            continue
+            continue;
         }
 
         //assignation de la valeur
         var value = values[index];
-
 
         var highVal = null;
         //si il y a un highlight
@@ -102,7 +98,9 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
         var dp: DataPoint = { name: name, mapData: feat, value: value, color: color, selectionId: selectionId, highlight: highVal };
         dps.push(dp);
     }
+    
 
     //resultat
     return { data: dps, minValue: minValue, maxValue: maxValue, emptyShape: empty }
 }
+

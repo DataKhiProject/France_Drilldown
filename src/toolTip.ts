@@ -145,6 +145,8 @@ class TooltipServiceWrapper implements ITooltipServiceWrapper {
         let data: T = <T>d3.select(target).datum();
         let mouseCoordinates = this.getCoordinates(rootNode, isPointerEvent);
         let elementCoordinates: number[] = this.getCoordinates(target, isPointerEvent);
+       
+        
         return {
             data: data,
             coordinates: mouseCoordinates,
