@@ -58,9 +58,9 @@ class TooltipServiceWrapper implements ITooltipServiceWrapper {
         }
         let rootNode = this.rootElement;
         // Mouse events
-        selection.on("mouseover.tooltip", () => {
+        selection.on("mouseover.tooltip", (event) => {
             // Ignore mouseover while handling touch events
-            if (!this.canDisplayTooltip(d3.event))
+            if (!this.canDisplayTooltip(event))
                 return;
             let tooltipEventArgs = this.makeTooltipEventArgs<T>(rootNode, true, false);
             if (!tooltipEventArgs)
