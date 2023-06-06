@@ -124,6 +124,13 @@
                     "type": {
                         "bool": true
                     }
+                },
+                "minValue0": {
+                    "displayName": "Minimal value at 0",
+                    "displayNameKey": "minValue0",
+                    "type": {
+                        "bool": true
+                    }
                 }
             }
         },

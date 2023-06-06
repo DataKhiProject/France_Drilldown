@@ -47,7 +47,7 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
 
     //on créer la fonction d'échelle d3. Cela permettras de définir la couleur de la forme en fonction de la valeur
     var quantile = d3.scaleQuantile()
-        .domain([0, maxValue])
+        .domain([settings.scale.minValue0?0:minValue, maxValue])
         .range(d3.range(settings.scale.rangeLevel));
 
     //booleen pour savoir si il y a une valeur highlighté

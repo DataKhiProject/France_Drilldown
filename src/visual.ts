@@ -205,7 +205,8 @@ export class Visual implements IVisual {
                     properties: {
                         show: this.settings.scale.show,
                         width: this.settings.scale.width,
-                        extremum: this.settings.scale.extremum
+                        extremum: this.settings.scale.extremum,
+                        minValue0: this.settings.scale.minValue0
                     },
                     validValues:{
                         width: {

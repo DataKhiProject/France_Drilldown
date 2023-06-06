@@ -26,6 +26,8 @@ export class ColorScale {
     public setRange(range: number) {
         if(range >= 2)
             this.range = range;
+        else
+            this.range = 2;
     }
 
     /**

@@ -52,7 +52,7 @@ export class Scale {
 
         //axe gradué
         var legendScale = d3.scaleLinear() //échelle linéaire pour nous permettre d'afficher les valeurs
-            .domain([dataModel.minValue < 0 ? dataModel.minValue : 0 , dataModel.maxValue])
+            .domain([settings.scale.minValue0?0: dataModel.minValue , dataModel.maxValue])
             .range([0, settings.scale.rangeLevel * elementHeight]);
         x = x - 10; //Pour décaler l'axe pour qu'il ne soit pas collé à l'échelle
 

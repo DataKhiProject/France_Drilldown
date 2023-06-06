@@ -50,6 +50,7 @@ class ScaleSetting {
   public show: boolean;
   public width: number;
   public extremum: boolean;
+  public minValue0: boolean;
 
   constructor() {
     this.rangeLevel = 6;
@@ -57,6 +58,7 @@ class ScaleSetting {
     this.show = true;
     this.width = 150;
     this.extremum = false;
+    this.minValue0 = false;
   }
 }
 
@@ -122,6 +124,7 @@ export class VisualSettings {
     this.scale.show = util.GETVALUE(metadata.objects,"scale","show",true);
     this.scale.width = util.GETVALUE(metadata.objects,"scale","width",150);
     this.scale.extremum = util.GETVALUE(metadata.objects,"scale","extremum",false);
+    this.scale.minValue0 = util.GETVALUE(metadata.objects,"scale","minValue0",false);
 
     //tooltip setting
     this.tooltip.show = util.GETVALUE(metadata.objects,"tooltip","show",true);
