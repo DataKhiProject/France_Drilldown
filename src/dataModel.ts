@@ -37,9 +37,11 @@ export function parseDataModel(dataView: DataView, settings: VisualSettings, hos
         var categoriesSimple: string[] = util.SIMPLIFYSTRINGARRAY(categories); //on simplifie le nom des catégorie pour facilité le matching avec le nom des formes
     }
 
-    //valeur extrême du dataview
-    var minValue: number = <number>dataView.categorical.values[0].minLocal;
-    let maxValue: number = <number>dataView.categorical.values[0].maxLocal;
+    //init des variable de recherche des min et max value (on utilise pas la valeur minLocal et maxLocal, car ces valeurs peuvent correspondre à la catégorie null)
+    var minValue: number = categories[values.length-1]?values[values.length-1]:values[values.length-2];
+    let maxValue: number = categories[0]?values[0]:values[1];
+    console.log(minValue)
+    console.log(maxValue)
     
     //on récupère le fond de carte si il y en a un de selectionner ou régions par défaut
     var map: string = settings.mapBackground.selectedMap ? settings.mapBackground.selectedMap : "regions";
