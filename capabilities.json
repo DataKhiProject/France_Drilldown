@@ -67,6 +67,13 @@
                         }
                     }
                 },
+                "minColorValue": {
+                    "displayName": "Minimal Color Value",
+                    "displayNameKey": "colorMinVal",
+                    "type": {
+                        "numeric": true
+                    }
+                },
                 "maxColor": {
                     "displayName": "Maximal Color",
                     "displayNameKey": "ColorMax",
@@ -76,6 +83,13 @@
                                 "color": true
                             }
                         }
+                    }
+                },
+                "maxColorValue": {
+                    "displayName": "Maximal Color Value",
+                    "displayNameKey": "colorMaxVal",
+                    "type": {
+                        "numeric": true
                     }
                 },
                 "divergentColorSwitch": {
@@ -94,6 +108,13 @@
                                 "color": true
                             }
                         }
+                    }
+                },
+                "middleColorValue": {
+                    "displayName": "Middle Color Value",
+                    "displayNameKey": "colorMidVal",
+                    "type": {
+                        "numeric": true
                     }
                 },
                 "colorRange": {

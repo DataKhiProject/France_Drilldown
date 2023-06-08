@@ -170,17 +170,20 @@ export class Visual implements IVisual {
                                     color: this.settings.color.minColor.solid.color
                                 }
                             },
+                            minColorValue: this.settings.color.minColorVal,
                             maxColor: {
                                 solid: {
                                     color: this.settings.color.maxColor.solid.color
                                 }
                             },
+                            maxColorValue: this.settings.color.maxColorVal,
                             divergentColorSwitch: this.settings.color.DivergentColor,
                             middleColor:{
                                 solid: {
                                     color: this.settings.color.midColor.solid.color
                                 }
                             },
+                            middleColorValue: this.settings.color.midColorVal,
                             colorRange: this.settings.scale.rangeLevel
                         },
                         validValues:{
@@ -188,6 +191,24 @@ export class Visual implements IVisual {
                                 numberRange:{
                                     min: 3,
                                     max: 30
+                                }
+                            },
+                            minColorValue: {
+                                numberRange:{
+                                    min: Number.MIN_VALUE,
+                                    max: Number.MAX_VALUE
+                                }
+                            },
+                            maxColorValue: {
+                                numberRange:{
+                                    min: Number.MIN_VALUE,
+                                    max: Number.MAX_VALUE
+                                }
+                            },
+                            middleColorValue: {
+                                numberRange:{
+                                    min: Number.MIN_VALUE,
+                                    max: Number.MAX_VALUE
                                 }
                             }
                         },
@@ -203,11 +224,13 @@ export class Visual implements IVisual {
                                 color: this.settings.color.minColor.solid.color
                             }
                         },
+                        minColorValue: this.settings.color.minColorVal,
                         maxColor: {
                             solid: {
                                 color: this.settings.color.maxColor.solid.color
                             }
                         },
+                        maxColorValue: this.settings.color.maxColorVal,
                         divergentColorSwitch: this.settings.color.DivergentColor,
                         colorRange: this.settings.scale.rangeLevel
                     },
@@ -216,6 +239,18 @@ export class Visual implements IVisual {
                             numberRange:{
                                 min: 3,
                                 max: 30
+                            }
+                        },
+                        minColorValue: {
+                            numberRange:{
+                                min: Number.MIN_VALUE,
+                                max: Number.MAX_VALUE
+                            }
+                        },
+                        maxColorValue: {
+                            numberRange:{
+                                min: Number.MIN_VALUE,
+                                max: Number.MAX_VALUE
                             }
                         }
                     },

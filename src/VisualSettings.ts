@@ -64,15 +64,21 @@ class ScaleSetting {
 
 class ColorSetting{
   public minColor:Fill;
+  public minColorVal: number;
   public maxColor:Fill;
+  public maxColorVal: number;
   public DivergentColor:boolean;
   public midColor:Fill;
+  public midColorVal: number;
 
   constructor() {
     this.minColor = {solid:{color:"#FFFF00"}};
+    this.minColorVal = null;
     this.maxColor = {solid:{color:"#FF0000"}};
+    this.maxColorVal = null;
     this.DivergentColor = false;
     this.midColor = {solid:{color:"#FF8800"}};
+    this.midColorVal = null;
   }
 }
 
@@ -118,9 +124,12 @@ export class VisualSettings {
 
     //color setting
     this.color.minColor = util.GETVALUE(metadata.objects,"couleur","minColor",{solid:{color:"#FFFF00"}});
+    this.color.minColorVal = util.GETVALUE(metadata.objects,"couleur","minColorValue",null);
     this.color.maxColor = util.GETVALUE(metadata.objects,"couleur","maxColor",{solid:{color:"#FF0000"}});
+    this.color.maxColorVal = util.GETVALUE(metadata.objects,"couleur","maxColorValue",null);
     this.color.DivergentColor = util.GETVALUE(metadata.objects,"couleur","divergentColorSwitch",false);
     this.color.midColor = util.GETVALUE(metadata.objects,"couleur","middleColor",{solid:{color:"#FF8800"}});
+    this.color.midColorVal = util.GETVALUE(metadata.objects,"couleur","middleColorValue",null);
 
     //color scale setting
     this.scale.rangeLevel = util.GETVALUE(metadata.objects,"couleur","colorRange",6); //donne le nombre de "catégorie" de couleur pour l'échelle

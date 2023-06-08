@@ -3,9 +3,12 @@
         "Value": "Valeur",
         "color": "Couleur",
         "colorMin": "Couleur minimale",
+        "colorMinVal" : "Valeur minimale",
         "ColorMax": "Couleur maximale",
+        "colorMaxVal" : "Valeur maximal",
         "DivergentColorSwitch": "Couleur divergente",
         "ColorMid": "Couleur Médiane",
+        "colorMidVal : "Valeur Médiane"
         "colorLevel": "Niveau de couleur",
         "tooltip": "Info-bulle",
         "display": "Afficher",
