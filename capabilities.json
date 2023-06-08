@@ -78,6 +78,24 @@
                         }
                     }
                 },
+                "divergentColorSwitch": {
+                    "displayName": "Divergent Color",
+                    "displayNameKey": "DivergentColorSwitch",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "middleColor": {
+                    "displayName": "Middle Color",
+                    "displayNameKey": "ColorMid",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
                 "colorRange": {
                     "displayName": "Color Level",
                     "displayNameKey": "colorLevel",

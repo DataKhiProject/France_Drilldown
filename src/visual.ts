@@ -160,6 +160,40 @@ export class Visual implements IVisual {
 
         switch (objectName) {
             case 'couleur':
+                if (this.settings.color.DivergentColor) //Si il y a couleur divergent sélectionné
+                    objectEnumeration.push({
+                        objectName: objectName,
+                        displayName: objectName,
+                        properties: {
+                            minColor: {
+                                solid: {
+                                    color: this.settings.color.minColor.solid.color
+                                }
+                            },
+                            maxColor: {
+                                solid: {
+                                    color: this.settings.color.maxColor.solid.color
+                                }
+                            },
+                            divergentColorSwitch: this.settings.color.DivergentColor,
+                            middleColor:{
+                                solid: {
+                                    color: this.settings.color.midColor.solid.color
+                                }
+                            },
+                            colorRange: this.settings.scale.rangeLevel
+                        },
+                        validValues:{
+                            colorRange: {
+                                numberRange:{
+                                    min: 3,
+                                    max: 30
+                                }
+                            }
+                        },
+                        selector: null
+                    });
+                else
                 objectEnumeration.push({
                     objectName: objectName,
                     displayName: objectName,
@@ -174,6 +208,7 @@ export class Visual implements IVisual {
                                 color: this.settings.color.maxColor.solid.color
                             }
                         },
+                        divergentColorSwitch: this.settings.color.DivergentColor,
                         colorRange: this.settings.scale.rangeLevel
                     },
                     validValues:{
