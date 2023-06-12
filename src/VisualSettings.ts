@@ -63,6 +63,7 @@ class ScaleSetting {
 }
 
 class ColorSetting{
+  public gradientColor:boolean;
   public minColor:Fill;
   public minColorVal: number;
   public maxColor:Fill;
@@ -72,6 +73,7 @@ class ColorSetting{
   public midColorVal: number;
 
   constructor() {
+    this.gradientColor = false;
     this.minColor = {solid:{color:"#FFFF00"}};
     this.minColorVal = null;
     this.maxColor = {solid:{color:"#FF0000"}};
@@ -123,6 +125,7 @@ export class VisualSettings {
     this.mapBackground.selectedMap = this.mapBackground.mapSelection[this.mapBackground.drillLevel]; //donne la carte a utiliser en fonction du niveau de drilldown
 
     //color setting
+    this.color.gradientColor = util.GETVALUE(metadata.objects,"couleur","gradientColor",false);
     this.color.minColor = util.GETVALUE(metadata.objects,"couleur","minColor",{solid:{color:"#FFFF00"}});
     this.color.minColorVal = util.GETVALUE(metadata.objects,"couleur","minColorValue",null);
     this.color.maxColor = util.GETVALUE(metadata.objects,"couleur","maxColor",{solid:{color:"#FF0000"}});

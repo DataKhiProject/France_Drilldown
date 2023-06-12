@@ -2,6 +2,7 @@
     "localization": "localisation",
         "Value": "Valeur",
         "color": "Couleur",
+        "gradientColor": "Couleur graduelle",
         "colorMin": "Couleur minimale",
         "colorMinVal" : "Valeur minimale",
         "ColorMax": "Couleur maximale",

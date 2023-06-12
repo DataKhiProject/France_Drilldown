@@ -160,11 +160,62 @@ export class Visual implements IVisual {
 
         switch (objectName) {
             case 'couleur':
-                if (this.settings.color.DivergentColor) //Si il y a couleur divergent sélectionné
+                if(this.settings.color.gradientColor){ //Si couleur gradient sélectionner
+                    if (this.settings.color.DivergentColor){ //Si il y a couleur divergent sélectionné
+                        objectEnumeration.push({
+                            objectName: objectName,
+                            displayName: objectName,
+                            properties: {
+                                gradientColor: this.settings.color.gradientColor,
+                                minColor: {
+                                    solid: {
+                                        color: this.settings.color.minColor.solid.color
+                                    }
+                                },
+                                minColorValue: this.settings.color.minColorVal,
+                                maxColor: {
+                                    solid: {
+                                        color: this.settings.color.maxColor.solid.color
+                                    }
+                                },
+                                maxColorValue: this.settings.color.maxColorVal,
+                                divergentColorSwitch: this.settings.color.DivergentColor,
+                                middleColor:{
+                                    solid: {
+                                        color: this.settings.color.midColor.solid.color
+                                    }
+                                },
+                                middleColorValue: this.settings.color.midColorVal
+                            },
+                            validValues:{
+                                minColorValue: {
+                                    numberRange:{
+                                        min: Number.MIN_VALUE,
+                                        max: Number.MAX_VALUE
+                                    }
+                                },
+                                maxColorValue: {
+                                    numberRange:{
+                                        min: Number.MIN_VALUE,
+                                        max: Number.MAX_VALUE
+                                    }
+                                },
+                                middleColorValue: {
+                                    numberRange:{
+                                        min: Number.MIN_VALUE,
+                                        max: Number.MAX_VALUE
+                                    }
+                                }
+                            },
+                            selector: null
+                        });
+                    }
+                    else
                     objectEnumeration.push({
                         objectName: objectName,
                         displayName: objectName,
                         properties: {
+                            gradientColor: this.settings.color.gradientColor,
                             minColor: {
                                 solid: {
                                     color: this.settings.color.minColor.solid.color
@@ -177,13 +228,43 @@ export class Visual implements IVisual {
                                 }
                             },
                             maxColorValue: this.settings.color.maxColorVal,
-                            divergentColorSwitch: this.settings.color.DivergentColor,
-                            middleColor:{
-                                solid: {
-                                    color: this.settings.color.midColor.solid.color
+                            divergentColorSwitch: this.settings.color.DivergentColor
+                        },
+                        validValues:{
+                            minColorValue: {
+                                numberRange:{
+                                    min: Number.MIN_VALUE,
+                                    max: Number.MAX_VALUE
                                 }
                             },
-                            middleColorValue: this.settings.color.midColorVal,
+                            maxColorValue: {
+                                numberRange:{
+                                    min: Number.MIN_VALUE,
+                                    max: Number.MAX_VALUE
+                                }
+                            }
+                        },
+                        selector: null
+                    });
+                }
+                else {
+                    objectEnumeration.push({
+                        objectName: objectName,
+                        displayName: objectName,
+                        properties: {
+                            gradientColor: this.settings.color.gradientColor,
+                            minColor: {
+                                solid: {
+                                    color: this.settings.color.minColor.solid.color
+                                }
+                            },
+                            minColorValue: this.settings.color.minColorVal,
+                            maxColor: {
+                                solid: {
+                                    color: this.settings.color.maxColor.solid.color
+                                }
+                            },
+                            maxColorValue: this.settings.color.maxColorVal,
                             colorRange: this.settings.scale.rangeLevel
                         },
                         validValues:{
@@ -204,58 +285,11 @@ export class Visual implements IVisual {
                                     min: Number.MIN_VALUE,
                                     max: Number.MAX_VALUE
                                 }
-                            },
-                            middleColorValue: {
-                                numberRange:{
-                                    min: Number.MIN_VALUE,
-                                    max: Number.MAX_VALUE
-                                }
                             }
                         },
                         selector: null
                     });
-                else
-                objectEnumeration.push({
-                    objectName: objectName,
-                    displayName: objectName,
-                    properties: {
-                        minColor: {
-                            solid: {
-                                color: this.settings.color.minColor.solid.color
-                            }
-                        },
-                        minColorValue: this.settings.color.minColorVal,
-                        maxColor: {
-                            solid: {
-                                color: this.settings.color.maxColor.solid.color
-                            }
-                        },
-                        maxColorValue: this.settings.color.maxColorVal,
-                        divergentColorSwitch: this.settings.color.DivergentColor,
-                        colorRange: this.settings.scale.rangeLevel
-                    },
-                    validValues:{
-                        colorRange: {
-                            numberRange:{
-                                min: 3,
-                                max: 30
-                            }
-                        },
-                        minColorValue: {
-                            numberRange:{
-                                min: Number.MIN_VALUE,
-                                max: Number.MAX_VALUE
-                            }
-                        },
-                        maxColorValue: {
-                            numberRange:{
-                                min: Number.MIN_VALUE,
-                                max: Number.MAX_VALUE
-                            }
-                        }
-                    },
-                    selector: null
-                });
+                }
                 break;
             case 'tooltip':
                 objectEnumeration.push({

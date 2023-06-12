@@ -56,6 +56,13 @@
             "displayName": "Color",
             "displayNameKey": "color",
             "properties": {
+                "gradientColor": {
+                    "displayName": "Gradient Scale",
+                    "displayNameKey": "gradientColor",
+                    "type": {
+                        "bool": true
+                    }
+                },
                 "minColor": {
                     "displayName": "Minimal Color",
                     "displayNameKey": "colorMin",
